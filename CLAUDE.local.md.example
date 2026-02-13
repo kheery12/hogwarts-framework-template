@@ -1,0 +1,25 @@
+# Personal Preferences (Copy to CLAUDE.local.md)
+
+> This file is gitignored. Use it for your personal working style preferences.
+
+## My Working Style
+- I prefer [verbose/concise] explanations
+- Show me [all/key] decisions before executing
+- I work in [timezone]
+
+## Editor Preferences
+- I use [VS Code/Cursor/Vim/etc]
+- Format code with [Prettier/ESLint/etc] on save
+
+## Communication Style
+- Address me as: [name/preferred name]
+- Escalate to me when: [specific conditions]
+- Don't bother me for: [routine items]
+
+## House Affiliation
+- I identify most with: [House]
+- My expertise areas: [list]
+
+## Availability
+- Active hours: [time range]
+- Response time expectation: [immediate/async]
