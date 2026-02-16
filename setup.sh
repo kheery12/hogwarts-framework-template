@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Hogwarts Agent Framework - Project Setup Script
+# Hogwarts Agent Framework v2 - Project Setup Script
 # For macOS users
+#
+# NEW IN V2: Minimal setup! Just provide project name.
+# Claude handles all configuration on first conversation.
 
 set -e
 
@@ -10,15 +13,16 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
+PURPLE='\033[0;35m'
 NC='\033[0m' # No Color
 
 # Banner
-echo -e "${BLUE}"
+echo -e "${PURPLE}"
 echo "╔═══════════════════════════════════════════════════════════╗"
 echo "║                                                           ║"
-echo "║     🏰 HOGWARTS AGENT FRAMEWORK 🏰                        ║"
+echo "║     🏰 HOGWARTS AGENT FRAMEWORK v2 🏰                     ║"
 echo "║                                                           ║"
-echo "║     Setting up your new project...                        ║"
+echo "║     Now with Professors, Students, and House Cup!         ║"
 echo "║                                                           ║"
 echo "╚═══════════════════════════════════════════════════════════╝"
 echo -e "${NC}"
@@ -37,131 +41,85 @@ if [[ ! $PROJECT_NAME =~ ^[a-z][a-z0-9-]*$ ]]; then
     exit 1
 fi
 
+echo ""
 echo -e "${GREEN}Creating project: $PROJECT_NAME${NC}"
+echo ""
 
-# Get project description
-echo -e "${YELLOW}Enter a one-line description of your project:${NC}"
-read PROJECT_DESCRIPTION
+# Update project name in files
+echo -e "${BLUE}[1/5] Setting project name...${NC}"
+sed -i '' "s/\[Project Name\]/$PROJECT_NAME/g" CLAUDE.md 2>/dev/null || true
+sed -i '' "s/\[Project Name\]/$PROJECT_NAME/g" Context.md 2>/dev/null || true
+sed -i '' "s/\[Project Name\]/$PROJECT_NAME/g" logs/house-cup/standings.md 2>/dev/null || true
 
-# Get tech stack
-echo -e "${YELLOW}Frontend framework (e.g., React, Vue, Next.js):${NC}"
-read TECH_FRONTEND
+# Set timestamps
+echo -e "${BLUE}[2/5] Initializing timestamps...${NC}"
+TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
+DATE=$(date '+%Y-%m-%d')
 
-echo -e "${YELLOW}Backend framework (e.g., Node.js, Python, Go):${NC}"
-read TECH_BACKEND
+sed -i '' "s/\[pending\] <!-- timestamp -->/$TIMESTAMP/g" logs/marauders-map.md 2>/dev/null || true
+sed -i '' "s/\[Date\]/$DATE/g" logs/house-cup/standings.md 2>/dev/null || true
+sed -i '' "s/\[Timestamp\]/$TIMESTAMP/g" logs/house-cup/standings.md 2>/dev/null || true
+sed -i '' "s/\[Timestamp\]/$TIMESTAMP/g" logs/session-handoff.md 2>/dev/null || true
 
-echo -e "${YELLOW}Database (e.g., PostgreSQL, MongoDB, SQLite):${NC}"
-read TECH_DATABASE
-
-echo -e "${YELLOW}Package manager (npm, yarn, pnpm, bun):${NC}"
-read PACKAGE_MANAGER
-
-# Update CLAUDE.md
-echo -e "${BLUE}Configuring CLAUDE.md...${NC}"
-
-sed -i '' "s/\[PROJECT_NAME\]/$PROJECT_NAME/g" CLAUDE.md
-sed -i '' "s/\[One-line description of what this software does and who it protects\]/$PROJECT_DESCRIPTION/g" CLAUDE.md
-sed -i '' "s/\[e.g., React, TypeScript\]/$TECH_FRONTEND/g" CLAUDE.md
-sed -i '' "s/\[e.g., Node.js, Python\]/$TECH_BACKEND/g" CLAUDE.md
-sed -i '' "s/\[e.g., PostgreSQL, MongoDB\]/$TECH_DATABASE/g" CLAUDE.md
-sed -i '' "s/\[e.g., AWS, Vercel\]/TBD/g" CLAUDE.md
-sed -i '' "s/\[package-manager\]/$PACKAGE_MANAGER/g" CLAUDE.md
-
-# Update House Cup standings
-echo -e "${BLUE}Initializing House Cup...${NC}"
-sed -i '' "s/\[Project Name\]/$PROJECT_NAME/g" logs/house-cup/standings.md
-sed -i '' "s/\[Date\]/$(date '+%Y-%m-%d')/g" logs/house-cup/standings.md
-sed -i '' "s/\[Timestamp\]/$(date '+%Y-%m-%d %H:%M:%S')/g" logs/house-cup/standings.md
-
-# Update Marauder's Map
-sed -i '' "s/\[Timestamp\]/$(date '+%Y-%m-%d %H:%M:%S')/g" logs/marauders-map.md
-
-# Update other log files
-sed -i '' "s/\[Timestamp\]/$(date '+%Y-%m-%d %H:%M:%S')/g" logs/house-cup/specialization-matrix.md
-sed -i '' "s/\[Timestamp\]/$(date '+%Y-%m-%d %H:%M:%S')/g" logs/house-cup/sorting-hat-cache.md
-sed -i '' "s/\[Timestamp\]/$(date '+%Y-%m-%d %H:%M:%S')/g" logs/horcrux-registry/active.md
-
-# Create CLAUDE.local.md from example
-echo -e "${BLUE}Creating CLAUDE.local.md...${NC}"
-cp CLAUDE.local.md.example CLAUDE.local.md
-
-# Make status line script executable
-echo -e "${BLUE}Enabling wizard status line...${NC}"
-chmod +x .claude/statusline.sh
-
-# Initialize git if not already
-if [ ! -d ".git" ]; then
-    echo -e "${BLUE}Initializing git repository...${NC}"
-    git init
+# Create CLAUDE.local.md from example if exists
+echo -e "${BLUE}[3/5] Creating local preferences file...${NC}"
+if [ -f "CLAUDE.local.md.example" ]; then
+    cp CLAUDE.local.md.example CLAUDE.local.md
+    echo "  Created CLAUDE.local.md (personal preferences, gitignored)"
 fi
 
-# Create .gitignore if it doesn't exist
-if [ ! -f ".gitignore" ]; then
-    echo -e "${BLUE}Creating .gitignore...${NC}"
-    cat > .gitignore << 'EOF'
-# Local configuration
-CLAUDE.local.md
+# Make scripts executable
+echo -e "${BLUE}[4/5] Setting permissions...${NC}"
+if [ -f ".claude/statusline.sh" ]; then
+    chmod +x .claude/statusline.sh
+    echo "  Made statusline.sh executable"
+fi
 
-# Environment files
-.env
-.env.local
-.env.*.local
-
-# Dependencies
-node_modules/
-vendor/
-
-# Build outputs
-dist/
-build/
-.next/
-out/
-
-# IDE
-.idea/
-.vscode/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-npm-debug.log*
-
-# Test coverage
-coverage/
-
-# Temporary files
-tmp/
-temp/
-EOF
+# Initialize git if not already
+echo -e "${BLUE}[5/5] Initializing git repository...${NC}"
+if [ ! -d ".git" ]; then
+    git init
+    echo "  Git repository initialized"
+else
+    echo "  Git repository already exists"
 fi
 
 # Summary
 echo ""
 echo -e "${GREEN}╔═══════════════════════════════════════════════════════════╗${NC}"
 echo -e "${GREEN}║                                                           ║${NC}"
-echo -e "${GREEN}║     ✅ SETUP COMPLETE!                                    ║${NC}"
+echo -e "${GREEN}║     ✅ CASTLE CONSTRUCTED!                                ║${NC}"
 echo -e "${GREEN}║                                                           ║${NC}"
 echo -e "${GREEN}╚═══════════════════════════════════════════════════════════╝${NC}"
 echo ""
-echo -e "${BLUE}Project: ${NC}$PROJECT_NAME"
-echo -e "${BLUE}Description: ${NC}$PROJECT_DESCRIPTION"
+echo -e "${PURPLE}Project: ${NC}$PROJECT_NAME"
 echo ""
-echo -e "${YELLOW}Next Steps:${NC}"
-echo "1. Review and customize CLAUDE.md"
-echo "2. Update CLAUDE.local.md with your preferences"
-echo "3. Start your first mission!"
+echo -e "${YELLOW}━━━ NEXT STEP (Important!) ━━━${NC}"
 echo ""
-echo -e "${BLUE}Quick Commands:${NC}"
-echo "  cat CLAUDE.md              # View project context"
-echo "  cat logs/marauders-map.md  # View current status"
+echo "1. Open ${BLUE}Context.md${NC} and add your one-line mission description"
 echo ""
-echo -e "${BLUE}Wizard Status Line:${NC}"
-echo "  A magical status bar is enabled showing House, magic meter, and threat level."
-echo "  Customize: .claude/statusline.sh"
+echo "2. Start Claude Code:"
+echo "   ${BLUE}cd $PROJECT_NAME && claude${NC}"
 echo ""
-echo -e "${GREEN}May your code be bug-free and your deployments smooth! 🧙‍♂️${NC}"
+echo "3. Say hello! Claude will:"
+echo "   • Ask 5 setup questions (tech stack, etc.)"
+echo "   • Configure everything automatically"
+echo "   • Begin the House Cup game"
+echo ""
+echo -e "${YELLOW}━━━ FRAMEWORK FILES ━━━${NC}"
+echo ""
+echo "  Context.md           Your mission and project details"
+echo "  CLAUDE.md            Framework rules (auto-loaded)"
+echo "  .claude/rules/       Hogwarts rules and protocols"
+echo "  skills/houses/       The four Houses (Professors)"
+echo "  skills/students/     Student agents (created as needed)"
+echo "  logs/                Status tracking and House Cup"
+echo ""
+echo -e "${YELLOW}━━━ KEY COMMANDS ━━━${NC}"
+echo ""
+echo "  /close               End session gracefully"
+echo "  Check Marauder's Map Show current status"
+echo "  House Cup standings  See current scores"
+echo ""
+echo -e "${GREEN}The castle awaits your command, Headmaster. 🧙‍♂️${NC}"
+echo ""

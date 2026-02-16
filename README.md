@@ -1,184 +1,165 @@
-# Hogwarts Agent Framework
+# Hogwarts Agent Framework v2 🏰
 
-> A magical approach to AI agent coordination for software development.
+A production-grade multi-agent coordination framework for Claude Code, themed around Hogwarts School of Witchcraft and Wizardry.
 
-## Overview
+## What's New in v2
 
-The Hogwarts Agent Framework structures AI agent teams like Hogwarts School of Witchcraft and Wizardry - a high-performing institution where specialized teachers (agents) work under coordinated leadership to build software.
+- **Minimal Setup**: Just add one line, Claude asks the rest
+- **Professor/Student Hierarchy**: Persistent Professors manage dynamic Student agents
+- **Four Specialized Houses**: Planners, Builders, Testers, and Glue Guys
+- **Enforced House Cup**: Points calculated and announced after every task
+- **Auto-Enrollment**: New Students created automatically when skill gaps emerge
+- **Memory Wipe & Expulsion**: Underperforming agents get reset or removed
+- **Session Lifecycle**: Boot sequence, checkpoints, and `/close` command
+- **Mandatory Consultation**: All houses weigh in before major decisions
 
-**Key Features:**
-- **House System** - Specialized agent teams (Gryffindor, Ravenclaw, Slytherin, Hufflepuff)
-- **Year Levels** - Risk-based approval tiers (Year 1-7)
-- **House Cup** - Performance tracking with points and expulsion
-- **Skills** - Progressive context loading for efficient token usage
-- **Contracts** - Formal interfaces between teams
-- **Protocols** - Emergency response, rollback, and agent replacement
-- **Wizard Status Line** - Magical themed status bar in Claude Code
-
-## Quick Start (macOS)
-
-### 1. Clone the Template
+## Quick Start
 
 ```bash
-git clone https://github.com/[your-username]/hogwarts-framework-template.git my-project
+# 1. Clone the template
+git clone https://github.com/kheery12/hogwarts-framework-template my-project
 cd my-project
-```
 
-### 2. Run Setup
-
-```bash
-chmod +x setup.sh
+# 2. Run setup
 ./setup.sh
+
+# 3. Add your mission to Context.md (one line)
+
+# 4. Start Claude Code
+claude
+
+# 5. Say hello - Claude handles the rest!
 ```
 
-Follow the prompts to configure your project.
+## The Houses
 
-### 3. Start Working
+| House | Role | Professor | Domain |
+|-------|------|-----------|--------|
+| 🦅 **Ravenclaw** | Planners | Flitwick | Requirements, Architecture, Documentation |
+| 🦁 **Gryffindor** | Builders | McGonagall | Code, Implementation, Making things real |
+| 🐍 **Slytherin** | Testers | Snape | QA, Security, Code Review (VETO power) |
+| 🦡 **Hufflepuff** | Glue Guys | Sprout | Integration, DevOps, Support |
 
-The framework is ready! Claude will automatically read `CLAUDE.md` at the start of each session.
-
-## Structure
+## Hierarchy
 
 ```
-your-project/
-├── CLAUDE.md                    # Project context (loads every session)
-├── CLAUDE.local.md              # Personal preferences (gitignored)
-├── .claude/
-│   ├── settings.json            # Claude Code configuration
-│   ├── statusline.sh            # Wizard-themed status bar script
-│   └── rules/                   # Framework rules
-│       ├── hogwarts-core.md     # Core hierarchy and processes
-│       ├── house-cup.md         # Scoring system
-│       ├── threat-levels.md     # Emergency protocols
-│       ├── forbidden-actions.md # Unforgivable curses
-│       └── interaction-protocols.md # Communication patterns
-├── skills/
-│   ├── houses/                  # House-specific skills
-│   │   ├── gryffindor/SKILL.md  # Frontend & UX
-│   │   ├── ravenclaw/SKILL.md   # Backend & Architecture
-│   │   ├── slytherin/SKILL.md   # Testing & Security
-│   │   └── hufflepuff/SKILL.md  # DevOps & Docs
-│   ├── protocols/               # Operational protocols
-│   │   ├── sorting-hat/         # Task assignment
-│   │   ├── time-turner/         # Rollback procedures
-│   │   ├── patronus/            # Emergency response
-│   │   └── apparition/          # Agent replacement
-│   └── internal/
-│       └── skill-creator/       # Creating new skills
-├── contracts/                   # Inter-house agreements
-│   ├── api-contracts/
-│   ├── component-contracts/
-│   ├── test-contracts/
-│   └── deploy-contracts/
-├── logs/
-│   ├── marauders-map.md         # Current status dashboard
-│   ├── pensieve/                # Mission records
-│   ├── house-cup/               # Points and standings
-│   └── horcrux-registry/        # Technical debt tracking
-└── docs/
-    └── FRAMEWORK_REFERENCE.md   # Complete documentation
+          HEADMASTER (You, the human)
+                    │
+              PROFESSORS (Persistent masters)
+                    │
+               STUDENTS (Subagents - created/expelled as needed)
 ```
 
-## The Four Houses
+## Session Lifecycle
 
-| House | Domain | Values |
-|-------|--------|--------|
-| **Gryffindor** | Frontend & UX | Courage, bold design, user-facing bravery |
-| **Ravenclaw** | Backend & Architecture | Wisdom, complex problem-solving, system design |
-| **Slytherin** | Testing & Security | Ambition, finding edge cases, breaking things constructively |
-| **Hufflepuff** | DevOps & Docs | Loyalty, hard work, foundational excellence |
+### Boot Sequence (Automatic)
+When you start Claude, it automatically:
+1. Reads Context.md, session-handoff.md, marauders-map.md
+2. Greets you with castle status
+3. Asks for your mission
 
-## Year Levels (Risk Tiers)
+### During Session
+- Mandatory checkpoints update status files
+- Points calculated after every task
+- All houses consulted before major decisions
 
-| Year | Risk | Examples | Approval |
-|------|------|----------|----------|
-| **1** | Minimal | Reading files, exploration | None |
-| **3** | Low-Medium | Refactoring, adding tests | House Head |
-| **5** | Medium-High | Architecture decisions, migrations | Deputy + House Head |
-| **7** | Critical | Production deploys, data deletion | Headmaster + Human |
+### Session End
+Use `/close` to:
+- Update Context.md with accomplishments
+- Write session-handoff.md for next time
+- Display session House Cup ceremony
 
-## House Cup
-
-Agents earn points based on:
-- **Quality** (1-10 score)
-- **Efficiency** (tokens used vs expected)
-- **Year Level** (complexity multiplier)
+## House Cup Scoring
 
 ```
 Points = (Quality × Year Level) × Efficiency Multiplier
+
+Where:
+- Quality: 1-10 rating
+- Year Level: 1 (safe) to 7 (critical)
+- Efficiency: Expected tokens / Actual tokens
 ```
 
-The lowest-performing agent of the lowest-scoring House faces expulsion.
+Points are announced after EVERY task. No exceptions.
 
-## Key Commands
-
-When working with Claude:
+## Student Lifecycle
 
 ```
-"Check the Marauder's Map"           # View current status
-"Form an Order for [task]"           # Assemble team
-"Great Hall Assembly"                # Progress checkpoint
-"Activate Patronus Protocol"         # Emergency response
-"Time-Turner Protocol"               # Rollback changes
-"Create skill for [feature]"         # Document knowledge
-"House Cup standings"                # View points
+Enrolled (Probationary)
+       ↓ 3 successful tasks
+    Active
+       ↓ poor performance
+    Warning
+       ↓ continued issues
+    Probation
+       ↓ no improvement
+    Memory Wipe (reset metrics, keep skills)
+       ↓ still failing
+    Expelled (removed)
 ```
 
-## Creating a New Project
+## Key Files
 
-1. Clone this template
-2. Run `./setup.sh your-project-name`
-3. Customize `CLAUDE.md` for your specific needs
-4. Start building!
+```
+project/
+├── CLAUDE.md              # Framework rules (auto-loaded)
+├── Context.md             # Your project details
+├── .claude/rules/         # All Hogwarts protocols
+│   ├── boot-sequence.md   # Session start protocol
+│   ├── mandatory-consultation.md
+│   ├── house-cup.md       # Scoring and enforcement
+│   ├── expulsion.md       # Performance management
+│   └── ...
+├── skills/
+│   ├── houses/            # Professor skills
+│   ├── students/          # Student skills (auto-created)
+│   ├── protocols/         # Emergency protocols
+│   └── commands/          # /close and others
+└── logs/
+    ├── marauders-map.md   # Live agent status
+    ├── session-handoff.md # Session continuity
+    └── house-cup/         # Standings and tracking
+```
 
-## Customization
+## Commands
 
-### Adding a New Skill
+| Command | What it does |
+|---------|--------------|
+| `/close` | End session gracefully with ceremony |
+| "Check Marauder's Map" | Show current agent status |
+| "House Cup standings" | Display current scores |
+| "Summon [House]" | Bring in that house's perspective |
+| "Form an Order" | Assemble multi-house team for task |
 
-1. Create folder in `skills/features/[name]/`
-2. Add `SKILL.md` with YAML frontmatter
-3. Include triggers, patterns, and decision log template
-4. Reference from relevant House skill
+## Threat Levels
 
-### Modifying House Behavior
+- 🟢 **GREEN**: Normal operations
+- 🟡 **YELLOW**: Deadline pressure, minor issues
+- 🟠 **ORANGE**: Critical bug, security issue
+- 🔴 **RED**: Production down, all hands on deck
 
-Edit `skills/houses/[house]/SKILL.md` to:
-- Add new patterns
-- Update decision logs
-- Modify quality checklists
+## Philosophy
 
-### Changing Scoring
+This framework enforces:
+- **Quality**: Mandatory consultation catches issues early
+- **Accountability**: Every task tracked, every point counted
+- **Continuity**: Session handoffs preserve context
+- **Excellence**: Underperformers are removed
 
-Edit `.claude/rules/house-cup.md` to adjust:
-- Points formula
-- Bonus criteria
-- Expulsion thresholds
+The game is always on. There is no off mode.
 
-### Wizard Status Line
+## Requirements
 
-A magical status bar appears at the bottom of Claude Code showing:
-- **Wizard title** based on model (Dumbledore for Opus, McGonagall for Sonnet, Flitwick for Haiku)
-- **House** auto-detected from git branch name
-- **Magic meter** showing context window usage
-- **Galleons** showing session cost
-- **Threat level** indicator (🟢🟡🟠🔴)
-
-Example: `[🧙 Dumbledore] GRYFFINDOR | Magic: ▓▓▓░░░░░░░ 30% | Galleons: $0.02 | 🟢`
-
-Customize: `.claude/statusline.sh`
-
-## Contributing
-
-This framework is open source. Contributions welcome:
-- Bug fixes
-- New protocol skills
-- Documentation improvements
-- House skill enhancements
+- macOS
+- Claude Code CLI
+- Git
 
 ## License
 
-MIT License - Use freely, modify as needed.
+MIT - Use freely, build great things.
 
 ---
 
-*"It does not do to dwell on dreams and forget to live." - But it does help to plan before you code.*
+*"It does not do to dwell on dreams and forget to live."* - Dumbledore
+
+Ship quality. Ship often. Protect the users.
