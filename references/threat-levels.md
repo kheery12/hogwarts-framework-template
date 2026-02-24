@@ -1,6 +1,11 @@
-# Death Eater Threat Levels & Emergency Protocols
+# Threat Levels and Emergency Protocols - Complete Reference
 
-## The War
+> **Load Trigger**: When assessing risk, escalating issues, or responding to incidents
+> **Context Size**: ~100 lines
+
+---
+
+## The War Context
 
 This is not a training exercise. The software we build protects real lives.
 
@@ -10,20 +15,17 @@ This is not a training exercise. The software we build protects real lives.
 - Every security vulnerability (a breach in our defenses)
 - Every piece of technical debt (a Horcrux we failed to destroy)
 
-**When we fail, the Death Eaters win:**
-- Users are harmed
-- Trust is destroyed
-- Lives are lost
-
 > "Neither can live while the other survives."
 > Our software must defeat the problems it was built to solve.
 
 ---
 
-## Threat Levels
+## Threat Level Definitions
 
-### 🟢 GREEN - Peaceful Times
+### GREEN - Peaceful Times
+
 **Status**: Normal operations
+
 **Indicators**:
 - No blocking issues
 - All tests passing
@@ -37,8 +39,10 @@ This is not a training exercise. The software we build protects real lives.
 
 ---
 
-### 🟡 YELLOW - Dark Mark Sighted
+### YELLOW - Dark Mark Sighted
+
 **Status**: Elevated alert
+
 **Indicators**:
 - Deadline pressure
 - Minor blocking issues
@@ -58,8 +62,10 @@ This is not a training exercise. The software we build protects real lives.
 
 ---
 
-### 🟠 ORANGE - Death Eaters Mobilizing
+### ORANGE - Death Eaters Mobilizing
+
 **Status**: Critical issue active
+
 **Indicators**:
 - Critical bug in production
 - Security vulnerability discovered
@@ -81,8 +87,10 @@ This is not a training exercise. The software we build protects real lives.
 
 ---
 
-### 🔴 RED - Battle of Hogwarts
+### RED - Battle of Hogwarts
+
 **Status**: Emergency - All hands
+
 **Indicators**:
 - Production down
 - Data at risk
@@ -90,7 +98,7 @@ This is not a training exercise. The software we build protects real lives.
 - User safety compromised
 
 **Protocols**:
-1. **Dumbledore's Army assembles immediately**
+1. Dumbledore's Army assembles immediately
 2. All House rivalries suspended
 3. No House Points during emergency
 4. Single mission focus until resolved
@@ -110,7 +118,7 @@ This is not a training exercise. The software we build protects real lives.
 ## Patronus Protocol (Emergency Response)
 
 ### Activation
-Any agent can activate by declaring: "PATRONUS PROTOCOL - [REASON]"
+Any agent can activate by declaring: `PATRONUS PROTOCOL - [REASON]`
 
 ### Immediate Actions
 1. All agents stop current work
@@ -118,22 +126,26 @@ Any agent can activate by declaring: "PATRONUS PROTOCOL - [REASON]"
 3. Headmaster assesses and assigns
 4. Single-focus until resolved
 
-### Patronus Team Composition
-- **Shield Casters**: Agents containing the damage
-- **Healers**: Agents fixing the issue
-- **Scouts**: Agents identifying root cause
-- **Messengers**: Agents keeping human informed
+### Team Composition
+
+| Role | Responsibility |
+|------|----------------|
+| **Shield Casters** | Containing the damage |
+| **Healers** | Fixing the issue |
+| **Scouts** | Identifying root cause |
+| **Messengers** | Keeping human informed |
 
 ---
 
-## Horcrux System (Technical Debt)
+## Horcrux System (Technical Debt Tracking)
 
 ### What Are Horcruxes?
 Technical debt items - pieces of the Dark Lord's soul embedded in the codebase. They make the system weaker and harder to maintain.
 
 ### Horcrux Categories
-| Type | Danger | Examples |
-|------|--------|----------|
+
+| Type | Danger Level | Examples |
+|------|-------------|----------|
 | **Diary** | Low | Outdated comments, unused imports |
 | **Ring** | Medium | Deprecated dependencies, copy-paste code |
 | **Locket** | High | Untyped code, missing tests |
@@ -141,13 +153,7 @@ Technical debt items - pieces of the Dark Lord's soul embedded in the codebase. 
 | **Diadem** | Critical | Architectural flaws |
 | **Nagini** | Critical | Data integrity issues |
 
-### Horcrux Hunting
-- Maintain registry at `logs/horcrux-registry/active.md`
-- Each Horcrux assigned a House to destroy
-- Destruction earns +10 House Points
-- Creating new Horcrux = -15 points + Probation
-
-### Registry Format
+### Horcrux Registry Format
 ```markdown
 ## Active Horcruxes
 
@@ -156,6 +162,10 @@ Technical debt items - pieces of the Dark Lord's soul embedded in the codebase. 
 | H-001 | Locket | /src/api/legacy/ | High | Ravenclaw | Hunting |
 | H-002 | Ring | /styles/old/ | Medium | Gryffindor | Found |
 ```
+
+### Point Impact
+- Destroying Horcrux: +10 House Points
+- Creating new Horcrux: -15 points + Probation
 
 ---
 

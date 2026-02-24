@@ -1,56 +1,39 @@
 # Project Context
 
-<!-- This file is auto-configured by the Hogwarts Framework on first conversation -->
-<!-- The Headmaster will ask setup questions and populate this file -->
-
 ## Mission
 > [pending - will be filled during first-time setup]
 
 ## Tech Stack
-| Layer | Technology | Notes |
-|-------|------------|-------|
-| Frontend | [pending] | |
-| Backend | [pending] | |
-| Database | [pending] | |
-| Package Manager | [pending] | |
-| Infrastructure | [pending] | |
+| Layer | Technology |
+|-------|------------|
+| Frontend | [pending] |
+| Backend | [pending] |
+| Database | [pending] |
+| Package Manager | [pending] |
 
-## Quick Commands
-```bash
-# Commands auto-populated after setup based on package manager
-```
+## Current Goals
+1. [Awaiting first mission]
 
-## Project Structure
-<!-- Auto-detected on first scan -->
-```
-[pending]
-```
+## House Activity (This Session)
 
-## Current Sprint/Goals
-<!-- Updated by Headmaster as project evolves -->
-1. [No active goals - awaiting first mission]
+| House | Involved | Tasks |
+|-------|----------|-------|
+| Ravenclaw | [ ] | |
+| Gryffindor | [ ] | |
+| Slytherin | [ ] | |
+| Hufflepuff | [ ] | |
+
+**Balance Check**: All 4 houses should be checked by session end.
 
 ## Key Decisions
-<!-- Architectural decisions and their rationale -->
-| Date | Decision | Rationale | Made By |
-|------|----------|-----------|---------|
-| - | - | - | - |
+| Date | Decision | House Lead |
+|------|----------|------------|
+| - | - | - |
 
-## Known Constraints
-<!-- Limitations, requirements, non-negotiables -->
-- [None specified yet]
-
-## Known Issues / Tech Debt (Horcruxes)
-<!-- Technical debt items to destroy -->
+## Known Issues (Horcruxes)
 - None yet
-
-## External Dependencies
-<!-- APIs, services, libraries that are critical -->
-- [None specified yet]
 
 ---
 
-## Framework Status
-- **Setup Complete**: No
-- **Last Updated**: [pending]
-- **Configured By**: [pending first session]
+**Setup Complete**: No
+**Last Updated**: [pending]

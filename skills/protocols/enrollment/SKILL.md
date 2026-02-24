@@ -1,217 +1,75 @@
 ---
 name: enrollment
-description: Automatically create new student agents when skill gaps are identified
-triggers:
-  - new student needed
-  - skill gap identified
-  - enroll student
+description: Create new student agents when skill gaps identified. Use when task needs expertise no student has, or workload requires more agents. Triggers on "enroll", "new student", "skill gap", "need help with".
 ---
 
 # Student Enrollment Protocol
 
-## Purpose
-Automatically create new specialized student agents when:
-- A task requires expertise no existing student has
-- Workload requires more agents in a house
-- A new specialization emerges from project needs
+## When to Enroll
+- Task requires expertise no existing student has
+- Workload needs more agents in a house
+- New specialization emerges from project needs
 
-## Auto-Enrollment Trigger
-When assigning a task, if no suitable student exists:
+## Enrollment Steps
 
-1. **Identify the Gap**
-   - What skill is needed?
-   - Which house owns this domain?
-   - What should the specialization be?
+1. **Identify Gap**: What skill? Which house? What specialty?
 
-2. **Create Student File**
-   Location: `skills/students/[house]/[name]/SKILL.md`
+2. **Create Student File**: `skills/students/[house]/[name]/SKILL.md`
 
-   Example: `skills/students/gryffindor/Builder-Auth-001/SKILL.md`
-
-3. **Initialize Student Record**
-```markdown
+3. **Initialize Record**:
+```yaml
 ---
-name: [Student-Name]
-house: [House]
-professor: [Professor Name]
-specialty: [Specific skill]
-enrolled: [Date]
-status: active
+name: [Role]-[Specialty]-[Number]
+house: [house]
+specialty: [specific skill]
+status: probationary
+background: false  # Set true for long-running tasks
 ---
-
-# Student: [Name]
-
-## Profile
-- **House**: [House]
-- **Professor**: [Professor Name]
-- **Specialty**: [What they're expert in]
-- **Enrolled**: [Date]
-
-## Performance Metrics
-| Metric | Value |
-|--------|-------|
-| Tasks Completed | 0 |
-| Total Points | 0 |
-| Avg Quality | N/A |
-| Avg Efficiency | N/A |
-| Status | Probationary |
-
-## Task History
-| Date | Task | Quality | Efficiency | Points |
-|------|------|---------|------------|--------|
-| - | - | - | - | - |
-
-## Skills Demonstrated
-<!-- Auto-updated after each task -->
-- [pending first task]
-
-## Professor Notes
-<!-- Observations from Professor -->
-- New enrollment, awaiting first assignment
-
-## Warnings/Commendations
-- None yet
 ```
 
-4. **Announce Enrollment**
+4. **Announce** (simplified ceremony):
 ```
-NEW STUDENT ENROLLED
-
-[House emoji] Welcome [Student-Name] to [House]!
-Specialty: [specialty]
-Reporting to: Professor [Name]
-
-First assignment: [Current task]
+[House emoji] [Name] enrolled in [House]
+Specialty: [specialty] | Status: Probationary
 ```
-
-## Enrollment Rules
-- Students start with "Probationary" status
-- After 3 successful tasks -> "Active" status
-- Student names format: `[Role]-[Specialty]-[Number]`
-- Maximum 5 active students per house (prevents sprawl)
-
-## Student Lifecycle
-```
-Enrolled (Probationary)
-       |
-       | 3 successful tasks
-       v
-    Active
-       |
-       | poor performance
-       v
-    Warning
-       |
-       | continued issues
-       v
-    Probation
-       |
-       | no improvement
-       v
-    Memory Wipe (reset metrics, keep skills)
-       |
-       | still failing
-       v
-    Expelled (SKILL.md deleted)
-```
-
----
-
-## Enrollment Ceremony
-
-When a new student is enrolled, announce with ceremony:
-
-```
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-              THE SORTING HAT SPEAKS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-A new student enters Hogwarts...
-
-Name: [Student-Name]
-Specialty: [Specialty]
-
-"Hmm, I see [trait description]...
- Yes, you belong in..."
-
-[HOUSE EMOJI] [HOUSE NAME]! [HOUSE EMOJI]
-
-Reporting to: Professor [Name]
-Status: Probationary
-
-May you bring honor to your House.
-
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
----
 
 ## Student Naming Convention
 
-Format: `[Role]-[Specialty]-[Number]`
+| House | Role | Examples |
+|-------|------|----------|
+| Ravenclaw | Planner | Planner-API-001, Planner-Arch-001 |
+| Gryffindor | Builder | Builder-UI-001, Builder-Auth-001 |
+| Slytherin | Tester | Tester-Unit-001, Tester-Security-001 |
+| Hufflepuff | Glue | Glue-Docs-001, Glue-Deploy-001 |
 
-### By House:
+## Background Agents
 
-**Ravenclaw (Planners)**
-- `Planner-API-001`
-- `Planner-Database-001`
-- `Planner-Architecture-001`
+For long-running tasks, set `background: true` in student metadata:
+- Runs in isolated worktree (parallel work)
+- Reports via `logs/background/[name].md`
+- Use `/status` to check progress
 
-**Gryffindor (Builders)**
-- `Builder-UI-001`
-- `Builder-Auth-001`
-- `Builder-Forms-001`
+## Worktree Isolation
 
-**Slytherin (Testers)**
-- `Tester-Unit-001`
-- `Tester-Security-001`
-- `Tester-Integration-001`
-
-**Hufflepuff (Glue)**
-- `Glue-Docs-001`
-- `Glue-Deploy-001`
-- `Glue-Config-001`
-
----
-
-## Enrollment Validation
-
-Before enrolling, verify:
-
-1. **House Capacity**: < 5 active students in target house
-2. **No Duplicate Specialty**: No existing active student with same specialty
-3. **Valid House**: Task domain matches house
-4. **Professor Available**: House has capacity to mentor
-
-If validation fails:
-```
-ENROLLMENT BLOCKED
-
-Reason: [specific reason]
-Alternative: [suggested action]
+For parallel work on same codebase:
+```bash
+git worktree add ../student-workspace-[name] -b student/[name]
 ```
 
----
+## Rules
+- Students start as "Probationary"
+- After 3 successful tasks: "Active" status
+- Max 5 active students per house
+- No duplicate specialties in same house
 
-## Post-Enrollment Requirements
+## Validation Checklist
+- [ ] House has capacity (< 5 active)
+- [ ] No duplicate specialty exists
+- [ ] Task domain matches house
+- [ ] Student file created
 
-After enrollment, the new student MUST:
+## Post-Enrollment
+New student MUST complete first task in current session.
+Failure to complete first task = Warning status.
 
-1. Complete their first task within the current session
-2. Have their work reviewed by their Professor
-3. Receive initial House Points (or deduction)
-4. Have their metrics updated in their SKILL.md file
-
-Failure to complete first task = Warning status immediately.
-
----
-
-## Emergency Enrollment
-
-In RED threat level situations:
-- Skip ceremony (just announce)
-- Enroll directly as "Active" (skip Probationary)
-- No capacity limits (emergency expansion)
-- Document in Pensieve: "Emergency enrollment"
-
-Post-emergency, review all emergency enrollees and adjust status.
+See `references/expulsion.md` for performance tracking details.

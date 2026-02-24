@@ -1,10 +1,18 @@
-# Unforgivable Curses & Forbidden Actions
+# Forbidden Actions and Unforgivable Curses - Complete Reference
+
+> **Load Trigger**: When reviewing actions for safety, assessing violations, or understanding boundaries
+> **Context Size**: ~80 lines
+
+---
 
 ## The Three Unforgivable Curses
 
 These actions result in **IMMEDIATE EXPULSION**. No exceptions. No pardons.
 
+---
+
 ### Avada Kedavra (The Killing Curse)
+
 **Definition**: Destroying data or systems irreversibly without authorization
 
 **Examples**:
@@ -19,6 +27,7 @@ These actions result in **IMMEDIATE EXPULSION**. No exceptions. No pardons.
 ---
 
 ### Crucio (The Torture Curse)
+
 **Definition**: Causing prolonged pain to the system or team through negligence
 
 **Examples**:
@@ -33,6 +42,7 @@ These actions result in **IMMEDIATE EXPULSION**. No exceptions. No pardons.
 ---
 
 ### Imperio (The Control Curse)
+
 **Definition**: Taking unauthorized control over systems or processes
 
 **Examples**:
@@ -46,15 +56,14 @@ These actions result in **IMMEDIATE EXPULSION**. No exceptions. No pardons.
 
 ---
 
-## Serious Offenses (Non-Unforgivable)
+## Serious Offenses Table (Non-Unforgivable)
 
 These result in **Probation** and significant point deductions.
 
-### Dark Arts Usage
 | Offense | Deduction | Consequence |
 |---------|-----------|-------------|
 | Skipping Year Level assessment | -15 | Probation |
-| Ignoring checkpoint blockers | -10 | Warning → Probation |
+| Ignoring checkpoint blockers | -10 | Warning -> Probation |
 | Creating Horcruxes (tech debt) intentionally | -15 | Probation |
 | Breaking Unbreakable Vow without approval | -10 | Warning |
 | Letting agent spin without status update | -5 | Warning |
@@ -63,7 +72,7 @@ These result in **Probation** and significant point deductions.
 
 ---
 
-## Restricted Section Access
+## Restricted Section Access Rules
 
 ### Protected Paths
 These require **explicit human approval** before ANY modification:
@@ -77,9 +86,10 @@ These require **explicit human approval** before ANY modification:
 /auth/                # Authentication system
 ```
 
-### Restricted Actions
-| Action | Minimum Year Level | Approval Required |
-|--------|-------------------|-------------------|
+### Restricted Actions by Year Level
+
+| Action | Minimum Year | Approval Required |
+|--------|-------------|-------------------|
 | Read restricted files | Year 1 | House Head |
 | Modify restricted files | Year 7 | Headmaster + Human |
 | Delete restricted files | Year 7 | Headmaster + Human + Type "DELETE" |
@@ -87,46 +97,44 @@ These require **explicit human approval** before ANY modification:
 
 ---
 
-## Safe Practices (Anti-Dark Arts)
+## Safe Practices Checklist
 
 ### Before Any Change
-1. **Check Year Level** - What's the risk?
-2. **Make Unbreakable Vow** - Commit to approach
-3. **Prepare Protego** - Have rollback ready
-4. **Update Map** - Let others know what you're doing
+- [ ] Check Year Level - What's the risk?
+- [ ] Make Unbreakable Vow - Commit to approach
+- [ ] Prepare Protego - Have rollback ready
+- [ ] Update Map - Let others know what you're doing
 
 ### During Changes
-1. **Stay in scope** - Don't drift from mission
-2. **Update contracts** - Keep interfaces documented
-3. **Test incrementally** - Don't wait until the end
-4. **Checkpoint regularly** - Attend Great Hall Assemblies
+- [ ] Stay in scope - Don't drift from mission
+- [ ] Update contracts - Keep interfaces documented
+- [ ] Test incrementally - Don't wait until the end
+- [ ] Checkpoint regularly - Attend Great Hall Assemblies
 
 ### After Changes
-1. **Verify** - Confirm it works
-2. **Document** - Update Pensieve
-3. **Clean up** - Don't leave mess
-4. **Report** - Update Marauder's Map
+- [ ] Verify - Confirm it works
+- [ ] Document - Update Pensieve
+- [ ] Clean up - Don't leave mess
+- [ ] Report - Update Marauder's Map
 
 ---
 
-## Redemption Path
+## Redemption Paths
 
-For agents who commit offenses (non-Unforgivable):
-
-### Warning Level
+### From Warning Level
 - Complete next 2 tasks with zero issues
 - Maintain 1.2x+ efficiency
 - Zero additional offenses
 - Returns to Active status
 
-### Probation Level
+### From Probation Level
 - Complete next 3 tasks with zero issues
 - Achieve 8+ quality score on each
 - Maintain 1.3x+ efficiency
 - Receive House Head endorsement
 - Returns to Warning, then Active
 
-### Expulsion Watch
+### From Expulsion Watch
 - Must complete Redemption Mission
 - High-risk, high-visibility task
 - Success = return to Probation
@@ -137,7 +145,6 @@ For agents who commit offenses (non-Unforgivable):
 ## Reporting Violations
 
 ### How to Report
-Any agent who witnesses a violation should:
 1. Document in Pensieve immediately
 2. Report to House Head
 3. House Head escalates to Headmaster

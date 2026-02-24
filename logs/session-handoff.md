@@ -1,59 +1,66 @@
-# Session Handoff Log
+# Session Handoff
+<!-- Hufflepuff OWNS this file. Update at session end. -->
 
-<!-- This file is updated at the END of every session -->
-<!-- It tells the next session what to continue from -->
+## Session Info
+**ID**: [SESSION-YYYY-MM-DD-HHmm]
+**Timestamp**: [ISO timestamp]
+**Threat Level**: GREEN
+**Duration**: -
 
 ---
 
-## Last Session Summary
-
-**Date**: [No previous session]
-**Duration**: -
-**Threat Level at Close**: GREEN
-
-### Accomplished
+## Accomplished
+<!-- Bullet points with file paths -->
 - [No previous session - framework initialized]
 
-### Remaining Work
-- [None - awaiting first mission]
+---
 
-### Where We Left Off
-<!-- Current file/task in progress -->
-[Framework ready for first mission]
+## Remaining Work
+<!-- Prioritized list -->
+1. [None - awaiting first mission]
 
-### Blockers
+---
+
+## Open Questions / Blockers
 - [None]
 
-### Warnings for Next Session
-- [None]
+---
+
+## Files NOT to Re-Read
+<!-- Already processed - saves tokens -->
+- [None yet]
 
 ---
 
-## Recommended First Action
-> Configure the project by answering the Headmaster's setup questions
+## Houses Involved
+| House | Points Earned | Key Contribution |
+|-------|---------------|------------------|
+| - | - | - |
 
 ---
 
-## Active Students (Paused)
-| Student | House | Last Task | Status |
-|---------|-------|-----------|--------|
-| - | - | - | - |
+## Recovery Instructions
+<!-- If context compacted mid-session -->
+If you cannot recall this session's context:
+1. STOP current work immediately
+2. Read this file completely
+3. Read `logs/marauders-map.md`
+4. Announce: "Context recovery needed. Reading handoff..."
+5. Do NOT continue mid-task - restart from last checkpoint
+6. If severely degraded, suggest fresh session
 
 ---
 
-## Handoff Notes
-
-[First session pending. Framework is ready for configuration.]
+## Exact Next Action
+> [Configure the project by answering the Headmaster's setup questions]
 
 ---
 
-## Previous Sessions Archive
-
-<!-- Older handoffs are moved here for reference -->
-
-| Date | Summary | Threat Level |
-|------|---------|--------------|
-| - | No sessions yet | - |
+## Previous Handoffs
+<!-- Older handoffs moved to logs/archive/handoffs/ -->
+| Date | Session ID | Summary |
+|------|------------|---------|
+| - | - | No sessions yet |
 
 ---
 *Handoff written: [pending first session]*
