@@ -1,11 +1,17 @@
 # Hogwarts Agent Framework - Quick Reference
 
 > **Version**: 3.0.0
-> **Last Updated**: 2026-02-24
+> **Last Updated**: 2026-03-09
 
 Quick reference card for the Hogwarts Agent Framework. For details, see:
 - [Functional Guide](./FUNCTIONAL_GUIDE.md) - How to use the framework
 - [Technical Guide](./TECHNICAL_GUIDE.md) - Why it works this way
+
+---
+
+## Version 3.0 Updates
+
+Version 3.0 introduces constraint-based architecture, extended thinking mode integration, a skill system distributed across houses, and remote control capabilities. See dedicated sections below for details.
 
 ---
 
@@ -54,6 +60,9 @@ Quick reference card for the Hogwarts Agent Framework. For details, see:
 | `/enroll [house] [spec]` | Create student agent |
 | `/points` | House Cup standings |
 | `/council [topic]` | 4-house consultation |
+| `/remote` | Start mobile/web continuation session |
+| `/thinking` | Toggle extended thinking mode (on/off/auto) |
+| `/skill-forge` | Create new skills with gatekeeping |
 
 ---
 
@@ -114,6 +123,79 @@ Session End → Hufflepuff handoff
 
 ---
 
+## Constraint-Based Architecture
+
+All houses now use NEVER rules (constraints) instead of just instructions. Constraints force precision better than positive instructions.
+
+**Example:**
+```markdown
+## Constraints (NEVER Do)
+- NEVER build without a spec for Year 3+ tasks
+- NEVER mark complete without Slytherin review
+- NEVER commit secrets or credentials
+```
+
+---
+
+## Thinking Mode Integration
+
+| House | Default | Rationale |
+|-------|---------|-----------|
+| Ravenclaw | ON | Planning needs deep reasoning |
+| Gryffindor | AUTO | Varies by implementation complexity |
+| Slytherin | ON | Security review needs thoroughness |
+| Hufflepuff | OFF | Procedural tasks, speed prioritized |
+
+**Triggers:**
+- Enable: "analyze", "architect", "design", "debug complex", "security review"
+- Disable: "quick", "just", "simple", "fast"
+
+---
+
+## Skill System
+
+Skills are distributed across houses by domain:
+
+| House | Domain | Example Skills |
+|-------|--------|----------------|
+| Ravenclaw | Planning, Architecture | skill-creator, doc-coauthoring, mcp-builder |
+| Gryffindor | Building, Implementation | frontend-design, web-artifacts, theme-factory |
+| Slytherin | Testing, Security | webapp-testing |
+| Hufflepuff | Integration, Documents | pdf, docx, xlsx, internal-comms |
+
+---
+
+## Skill Creation Protocol
+
+New skills must:
+1. Follow `references/skill-standards.md`
+2. Have pushy, trigger-focused descriptions
+3. Include 3-5 NEVER constraints
+4. Pass Slytherin review before deployment
+5. Be assigned to appropriate house
+
+Use `/skill-forge` or "create a skill for..." to start the process.
+
+---
+
+## Remote Control
+
+Continue local sessions from any device:
+
+```bash
+claude remote-control "Project - Task"
+```
+
+Or from active session: `/remote "Session Name"`
+
+Features:
+- Local environment stays available
+- QR code for mobile app access
+- Auto-reconnect on network drops
+- Conversation syncs across devices
+
+---
+
 ## Boot Greeting Format
 
 ```
@@ -156,10 +238,39 @@ Council Decision: [synthesized approach]
 
 ---
 
+## Directory Structure (Updated)
+
+```
+hogwarts-framework-template/
+├── .claude/
+│   ├── commands/
+│   │   ├── remote.md        # NEW
+│   │   ├── thinking.md      # NEW
+│   │   └── ...
+│   └── rules/
+│       └── core.md          # Updated with thinking mode
+├── skills/
+│   ├── houses/
+│   │   └── [house]/
+│   │       ├── SKILL.md     # Updated with constraints
+│   │       └── skills/      # NEW: House-specific skills
+│   │           └── README.md
+│   └── protocols/
+│       └── skill-forge/     # NEW
+│           ├── SKILL.md
+│           └── references/
+│               └── evaluation.md
+└── references/
+    └── skill-standards.md   # NEW
+```
+
+---
+
 ## Version History
 
 | Version | Date | Changes |
 |---------|------|---------|
-| 3.0.0 | 2026-02-24 | Research-driven redesign, 80% rule reduction |
+| 3.0.0 | 2026-03-09 | Constraint-based architecture, thinking mode, skill system, remote control |
+| 3.0.0-beta | 2026-02-24 | Research-driven redesign, 80% rule reduction |
 | 2.0.0 | 2026-02-15 | Professor/Student hierarchy |
 | 1.0.0 | 2026-02-13 | Initial release |

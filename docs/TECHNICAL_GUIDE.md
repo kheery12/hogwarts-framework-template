@@ -17,8 +17,12 @@ A deep dive into the design decisions, research backing, and implementation deta
 6. [House Balance Mechanics](#house-balance-mechanics)
 7. [Session Management](#session-management)
 8. [Skill System](#skill-system)
-9. [Points & Gamification](#points--gamification)
-10. [Emergency Protocols](#emergency-protocols)
+9. [Subagent Configuration](#subagent-configuration)
+10. [Skill Architecture](#skill-architecture)
+11. [Remote Control](#remote-control)
+12. [Constraint-Based Design](#constraint-based-design)
+13. [Points & Gamification](#points--gamification)
+14. [Emergency Protocols](#emergency-protocols)
 
 ---
 
@@ -430,6 +434,85 @@ background: true
 ```
 
 Students can run in background (`background: true`) for parallel work.
+
+---
+
+## Subagent Configuration
+
+Each house has specific model and tool configurations:
+
+| House | Model | Tools | Thinking |
+|-------|-------|-------|----------|
+| Ravenclaw | opus | Read, Glob, Grep, WebSearch, WebFetch | ON |
+| Gryffindor | sonnet | Read, Write, Edit, Bash, Glob, Grep | AUTO |
+| Slytherin | sonnet | Read, Bash, Glob, Grep | ON |
+| Hufflepuff | haiku | Read, Write, Edit, Bash, Glob | OFF |
+
+---
+
+## Skill Architecture
+
+Skills follow Anthropic's official structure:
+
+```
+skill-name/
+├── SKILL.md              # Core instructions (<200 lines)
+├── references/           # Extended documentation
+├── examples/             # Sample inputs/outputs
+├── scripts/              # Executable helpers
+└── evals/                # Test cases
+```
+
+### SKILL.md Frontmatter
+
+```yaml
+---
+name: lowercase-with-hyphens
+description: Pushy trigger description
+allowed-tools: Read, Write, Edit
+model: haiku|sonnet|opus
+---
+```
+
+### Skill Distribution
+
+| House | Skills |
+|-------|--------|
+| Ravenclaw | skill-creator, doc-coauthoring, mcp-builder, claude-api |
+| Gryffindor | frontend-design, web-artifacts, algorithmic-art, theme-factory |
+| Slytherin | webapp-testing |
+| Hufflepuff | pdf, docx, xlsx, internal-comms |
+
+---
+
+## Remote Control
+
+Continue sessions from mobile/web:
+
+```bash
+# From terminal
+claude remote-control "Session Name"
+
+# From active session
+/remote "Session Name"
+```
+
+Access at claude.ai/code or Claude mobile app.
+
+---
+
+## Constraint-Based Design
+
+Every skill and house uses NEVER rules to force precision:
+
+```markdown
+## Constraints (NEVER Do)
+- NEVER [action] without [prerequisite]
+- NEVER [scope violation]
+- NEVER [skip required step]
+```
+
+This pattern produces more consistent output than positive instructions alone.
 
 ---
 

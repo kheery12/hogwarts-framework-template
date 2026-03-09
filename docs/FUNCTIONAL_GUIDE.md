@@ -10,14 +10,16 @@ A practical guide for using the Hogwarts Agent Framework in your projects.
 ## Table of Contents
 
 1. [Quick Start](#quick-start)
-2. [Daily Workflow](#daily-workflow)
-3. [The Four Houses](#the-four-houses)
-4. [Slash Commands](#slash-commands)
-5. [Session Lifecycle](#session-lifecycle)
-6. [House Cup Game](#house-cup-game)
-7. [Year Levels](#year-levels)
-8. [Common Scenarios](#common-scenarios)
-9. [Troubleshooting](#troubleshooting)
+2. [Quick Commands](#quick-commands)
+3. [Trigger Phrases](#trigger-phrases)
+4. [Daily Workflow](#daily-workflow)
+5. [The Four Houses](#the-four-houses)
+6. [Slash Commands](#slash-commands)
+7. [Session Lifecycle](#session-lifecycle)
+8. [House Cup Game](#house-cup-game)
+9. [Year Levels](#year-levels)
+10. [Common Scenarios](#common-scenarios)
+11. [Troubleshooting](#troubleshooting)
 
 ---
 
@@ -40,6 +42,52 @@ cd my-project
 3. **Start working** - Claude reads CLAUDE.md automatically and activates the framework
 
 The framework activates automatically. Hufflepuff greets you with the castle status.
+
+---
+
+## Quick Commands
+
+| Command | Purpose | Example |
+|---------|---------|---------|
+| `/remote` | Switch to mobile/web | `/remote "Working on auth"` |
+| `/thinking on` | Enable deep reasoning | Before architecture work |
+| `/thinking off` | Fast mode | Simple edits |
+| `/thinking auto` | Auto-detect (default) | Normal operation |
+| `/skill-forge` | Create new skill | "Create a skill for..." |
+| `/status` | View current state | Check progress |
+| `/handoff` | Close session | End of work |
+| `/council` | Consult all houses | Complex decisions |
+| `/points` | View house standings | Check scores |
+| `/enroll` | Create new student agent | Spawn specialist |
+
+---
+
+## Trigger Phrases
+
+Use these phrases to activate specific behaviors:
+
+### House Activation
+| Phrase | Activates | Use When |
+|--------|-----------|----------|
+| "plan", "architect", "design", "research" | Ravenclaw | Need strategy/specs |
+| "build", "implement", "code", "fix" | Gryffindor | Writing code |
+| "test", "review", "secure", "validate" | Slytherin | QA/security check |
+| "deploy", "document", "integrate", "handoff" | Hufflepuff | Operations |
+
+### Thinking Mode
+| Phrase | Effect |
+|--------|--------|
+| "analyze", "debug complex", "architect" | Enables thinking |
+| "quick", "just", "simple", "fast" | Disables thinking |
+| "ultrathink" | Maximum reasoning depth |
+
+### Task Complexity
+| Phrase | Year Level | Approval Needed |
+|--------|------------|-----------------|
+| "simple change", "minor fix" | Year 1-2 | None |
+| "refactor", "new feature" | Year 3-4 | Professor |
+| "architecture", "migration" | Year 5-6 | Professor + Deputy |
+| "production deploy", "delete data" | Year 7 | Headmaster (you) |
 
 ---
 
@@ -142,6 +190,9 @@ Use `/handoff` to gracefully close:
 | `/enroll` | Create a student agent | `/enroll gryffindor "API specialist"` |
 | `/points` | Show House Cup standings | `/points` |
 | `/council` | Convene 4-house consultation | `/council "database choice"` |
+| `/remote` | Enable mobile/web continuation | `/remote "Working on auth"` |
+| `/thinking on/off/auto` | Control reasoning depth | `/thinking on` |
+| `/skill-forge` | Create a new skill | `/skill-forge "PDF parser"` |
 
 ### /handoff
 
@@ -199,6 +250,38 @@ Convenes all four houses for consultation:
 ```
 
 Each house provides their perspective, then a synthesized decision.
+
+### /remote
+
+Enables mobile/web session continuation:
+```
+/remote "Working on authentication"
+```
+
+Access via claude.ai/code or Claude mobile app. Perfect for reviewing on the go.
+
+### /thinking
+
+Controls reasoning depth:
+```
+/thinking on    # Enable deep reasoning (for architecture, debugging)
+/thinking off   # Fast mode (simple edits, routine tasks)
+/thinking auto  # Auto-detect based on task complexity (default)
+```
+
+### /skill-forge
+
+Creates a new skill using Anthropic's official structure:
+```
+/skill-forge "Create a skill for PDF parsing"
+```
+
+Ravenclaw designs the skill specification, then generates:
+- `SKILL.md` - Core instructions
+- `references/` - Extended documentation
+- `examples/` - Sample inputs/outputs
+- `scripts/` - Executable helpers
+- `evals/` - Test cases
 
 ---
 

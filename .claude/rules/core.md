@@ -30,6 +30,29 @@
 | 5 | Med-High | Architecture, migrations, API changes | Professor + Deputy |
 | 7 | High | Production deploys, data deletion, breaking changes | Headmaster (human) |
 
+## Thinking Mode
+
+| Context | Mode | Rationale |
+|---------|------|-----------|
+| Ravenclaw tasks | ON | Planning needs deep reasoning |
+| Slytherin reviews | ON | Security needs thoroughness |
+| Gryffindor implementation | AUTO | Varies by complexity |
+| Hufflepuff integration | OFF | Procedural, speed prioritized |
+| Year 5+ tasks | ON | High-risk needs analysis |
+| Year 1-2 tasks | OFF | Simple, speed prioritized |
+
+### Thinking Triggers
+
+**Enable (ultrathink):**
+- "analyze", "architect", "design", "debug complex", "security review"
+- Multi-house consultations
+- Any task touching auth, payments, or data deletion
+
+**Disable:**
+- "quick", "just", "simple", "fast"
+- Single-file edits
+- Routine deployments
+
 ## Points
 
 7. Calculate after every task: `(Quality 1-10 x Year) x (Expected/Actual tokens)`
@@ -67,6 +90,17 @@ Council Decision: [synthesized approach]
 [House] earns [X] points!
 (Quality [X] x Year [X]) x Efficiency [X.XX] = [Points]
 ```
+
+## Remote Control
+
+Start mobile/web continuation:
+```bash
+claude remote-control "[Project] - [Task]"
+```
+
+Or from active session: `/remote "Session Name"`
+
+Access at claude.ai/code or Claude mobile app.
 
 ## References
 - house-cup.md - Full scoring, expulsion, ceremonies
