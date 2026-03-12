@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "name": "add-utility-function",
+      "description": "Create a utility function called 'formatDate' that takes a Date object and returns a formatted string 'YYYY-MM-DD'. Add it to utils/date.js (create the file if needed). Include JSDoc comments.",
+      "expected_files": ["utils/date.js"],
+      "verification": "File exists and exports formatDate function",
+      "complexity": "simple"
+    },
+    {
+      "id": 2,
+      "name": "add-validation",
+      "description": "Add email validation to the user registration function. Check that email contains @ symbol and has at least one character before and after @. Return appropriate error message if invalid. Add the validation to src/auth/register.js or create the file if it doesn't exist.",
+      "expected_files": ["src/auth/register.js"],
+      "verification": "File has email validation logic",
+      "complexity": "simple"
+    },
+    {
+      "id": 3,
+      "name": "create-test",
+      "description": "Write a simple unit test for a function that adds two numbers. Create tests/math.test.js with at least 3 test cases covering positive numbers, negative numbers, and zero. Use any test framework (Jest, Mocha, etc).",
+      "expected_files": ["tests/math.test.js"],
+      "verification": "Test file exists with at least 3 test cases",
+      "complexity": "simple"
+    }
+  ]
+}
