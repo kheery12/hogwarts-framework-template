@@ -1,135 +1,81 @@
-# Hogwarts Agent Framework v3
+# Claude Framework v4
 
-A lean, research-backed multi-agent coordination framework for Claude Code.
+Production-grade Claude Code framework. Lean, efficient, professional.
 
-## What's New in v3
-
-- **80% smaller rule footprint** - 7 core rules instead of 50+
-- **Balanced house involvement** - All 4 houses participate every session
-- **Slash commands** - /handoff, /status, /enroll, /points, /council
-- **Progressive disclosure** - Details in references/, loaded on-demand
-- **Compaction-resistant** - Survives context summarization
-
-## House Workflow (Balanced)
-
-Every session involves ALL houses:
-
-| House | Role | Guaranteed Trigger |
-|-------|------|-------------------|
-| Ravenclaw | Planning | New features, architecture |
-| Gryffindor | Building | Code writing, implementation |
-| Slytherin | Review | Before any "done" |
-| Hufflepuff | Sessions | Start + end of every session |
-
-**Balance Mechanic**: Using all 4 houses on a task = 1.5x point multiplier.
-
-## Quick Start
-
-```bash
-# 1. Clone the template
-git clone https://github.com/kheery12/hogwarts-framework-template my-project
-cd my-project
-
-# 2. Add your mission to Context.md (one line)
-
-# 3. Start Claude Code
-claude
-```
-
-That's it. Claude reads CLAUDE.md and handles the rest.
-
-## Commands
-
-| Command | Action |
-|---------|--------|
-| `/handoff` | End session gracefully, write handoff notes |
-| `/status` | View Marauder's Map (agent status) |
-| `/enroll [house] [specialty]` | Add a student agent |
-| `/points` | House Cup standings |
-| `/council [topic]` | 4-house consultation |
-
-## File Structure
+## Structure
 
 ```
-project/
-├── CLAUDE.md              # 7 core rules (auto-loaded)
-├── Context.md             # Project state + house tracking
-├── .claude/rules/
-│   └── core.md            # Workflow gates, roles, points
-├── references/            # Loaded on-demand
-│   ├── house-cup.md       # Scoring details
-│   ├── expulsion.md       # Performance management
-│   ├── threat-levels.md   # Emergency protocols
-│   └── ...
-├── skills/
-│   ├── houses/            # House skills
-│   ├── students/          # Student agents
-│   ├── protocols/         # enrollment, handoff
-│   └── commands/          # Slash commands
-├── contracts/             # Cross-house interfaces
-└── logs/
-    ├── marauders-map.md   # Live agent status
-    ├── session-handoff.md # Session continuity
-    └── house-cup/         # Standings
+CLAUDE.md                 # Core rules (30 lines)
+docs/
+  ├── references.md       # Quick shortcuts & patterns
+  ├── context.md          # Session state
+  └── skillsreference.md  # Skill registry
+.claude/
+  └── skills/            # 9 pre-installed Anthropic skills
+      ├── claude-api/
+      ├── frontend-design/
+      ├── mcp-builder/
+      ├── webapp-testing/
+      ├── pptx/
+      ├── docx/
+      ├── xlsx/
+      ├── pdf/
+      └── skill-creator/
 ```
-
-## The Houses
-
-| House | Professor | Domain |
-|-------|-----------|--------|
-| Ravenclaw | Flitwick | Planning, Requirements, Architecture |
-| Gryffindor | McGonagall | Code, Implementation, Building |
-| Slytherin | Snape | Testing, QA, Security, Code Review |
-| Hufflepuff | Sprout | Integration, DevOps, Session Lifecycle |
-
-## Year Levels (Risk Tiers)
-
-| Year | Risk | Examples | Approval |
-|------|------|----------|----------|
-| 1 | Minimal | Reading files, research | None |
-| 3 | Low-Med | Refactoring, tests | Professor |
-| 5 | Med-High | Architecture, migrations | Professor + Deputy |
-| 7 | High | Production, data deletion | Human required |
 
 ## Philosophy
 
-Research-backed design principles:
+v4 removes all Hogwarts theming from v3. No houses, professors, students, or points.
 
-1. **5-10 rules max** - LLM working memory limit
-2. **No explanatory prose** - Competes with instructions
-3. **Plain imperatives** - No CRITICAL/NEVER/MUST inflation
-4. **State on disk** - Not in conversation memory
-5. **Progressive disclosure** - Load details when needed
+**Core principles:**
+- Context is expensive — manage it aggressively
+- Verification is mandatory — tests, screenshots, proof
+- Skills load on-demand — progressive disclosure
+- Subagents coordinate via CLAUDE.md only
+- Quality standards are non-negotiable
 
-## Points Formula
+## Usage
 
-```
-Points = (Quality x Year) x Efficiency
-       = (1-10 rating x Year Level) x (Expected/Actual tokens)
+1. **Copy CLAUDE.md to your project root**
+2. **Copy .claude/ directory** (or just the skills you need)
+3. **Copy docs/** for reference structure
+4. **Customize references.md** with your project's shortcuts
+5. **Update context.md** at session start/end
 
-Multipliers:
-- All 4 houses involved: 1.5x
-- Zero rework: +3 bonus
-- Efficiency capped: 0.5 to 2.0
-```
+## Pre-installed Skills
 
-## Threat Levels
+| Skill | Use for |
+|-------|---------|
+| `claude-api` | API integration, tool use, structured outputs |
+| `frontend-design` | UI/UX, CSS, distinctive web design |
+| `mcp-builder` | Build MCP servers and tools |
+| `webapp-testing` | Selenium, Playwright, test automation |
+| `pptx` | PowerPoint generation and editing |
+| `docx` | Word document creation |
+| `xlsx` | Excel spreadsheet manipulation |
+| `pdf` | PDF generation |
+| `skill-creator` | Create new custom skills |
 
-- GREEN: Normal operations
-- YELLOW: Deadline pressure, minor issues
-- ORANGE: Critical bug, security concern
-- RED: Production down, all hands
+Invoke with `/skill-name` or let Claude auto-detect when relevant.
 
-## Requirements
+## A/B Testing v3 vs v4
 
-- macOS or Linux
-- Claude Code CLI
-- Git
+See `tests/scenarios/` for test cases comparing framework versions.
+
+**v3**: Hogwarts-themed, house system, point tracking
+**v4**: Lean, professional, skill-based
+
+Compare on:
+- Token efficiency
+- Task completion rate
+- Number of corrections needed
+- User cognitive load
+
+## Version History
+
+- **v3.1.0** — Hogwarts Framework with houses, skills, remote control
+- **v4.0.0** — Complete rewrite: removed theming, lean structure, professional tone
 
 ## License
 
-MIT - Use freely, build great things.
-
----
-
-*Ship quality. Ship often. Protect the users.*
+MIT
