@@ -109,7 +109,7 @@ while IFS='|' read -r task_id task_name task_desc; do
     cd "/tmp/vanilla-prod-test-${TASK_NUM}"
 
     VANILLA_START=$(date +%s)
-    echo "$task_desc" | claude -p --permission-mode bypassPermissions > "/tmp/vanilla-task${TASK_NUM}.log" 2>&1 || true
+    echo "$task_desc" | claude -p --dangerously-skip-permissions > "/tmp/vanilla-task${TASK_NUM}.log" 2>&1 || true
     VANILLA_END=$(date +%s)
     VANILLA_TIME=$(( (VANILLA_END - VANILLA_START) / 60 ))
     VANILLA_TOKENS=$(( $(wc -c < "/tmp/vanilla-task${TASK_NUM}.log") / 4 ))
