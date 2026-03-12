@@ -74,7 +74,7 @@ while IFS='|' read -r task_id task_name task_desc; do
     git checkout v3.1.0-stable > /dev/null 2>&1
 
     V3_START=$(date +%s)
-    echo "$task_desc" | claude --no-confirm > "/tmp/v3-task${TASK_NUM}.log" 2>&1 || true
+    echo "$task_desc" | claude -p > "/tmp/v3-task${TASK_NUM}.log" 2>&1 || true
     V3_END=$(date +%s)
     V3_TIME=$(( (V3_END - V3_START) / 60 ))
     V3_TOKENS=$(( $(wc -c < "/tmp/v3-task${TASK_NUM}.log") / 4 ))
@@ -91,7 +91,7 @@ while IFS='|' read -r task_id task_name task_desc; do
     git checkout v4-development > /dev/null 2>&1
 
     V4_START=$(date +%s)
-    echo "$task_desc" | claude --no-confirm > "/tmp/v4-task${TASK_NUM}.log" 2>&1 || true
+    echo "$task_desc" | claude -p > "/tmp/v4-task${TASK_NUM}.log" 2>&1 || true
     V4_END=$(date +%s)
     V4_TIME=$(( (V4_END - V4_START) / 60 ))
     V4_TOKENS=$(( $(wc -c < "/tmp/v4-task${TASK_NUM}.log") / 4 ))
@@ -104,12 +104,12 @@ while IFS='|' read -r task_id task_name task_desc; do
 
     # Test vanilla
     echo "Testing vanilla (no framework)..."
-    cd "/tmp/vanilla-prod-test-${TASK_NUM}"
     rm -rf "/tmp/vanilla-prod-test-${TASK_NUM}"
     mkdir -p "/tmp/vanilla-prod-test-${TASK_NUM}"
+    cd "/tmp/vanilla-prod-test-${TASK_NUM}"
 
     VANILLA_START=$(date +%s)
-    echo "$task_desc" | claude --no-confirm > "/tmp/vanilla-task${TASK_NUM}.log" 2>&1 || true
+    echo "$task_desc" | claude -p > "/tmp/vanilla-task${TASK_NUM}.log" 2>&1 || true
     VANILLA_END=$(date +%s)
     VANILLA_TIME=$(( (VANILLA_END - VANILLA_START) / 60 ))
     VANILLA_TOKENS=$(( $(wc -c < "/tmp/vanilla-task${TASK_NUM}.log") / 4 ))
