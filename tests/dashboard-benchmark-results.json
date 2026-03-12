@@ -1,0 +1,26 @@
+{
+  "test_date": "2026-03-12",
+  "task": "dashboard-creation",
+  "data_file": "04 Restaurant Sales.xlsx",
+  "results": {
+    "v3": {
+      "tokens": 336,
+      "time_minutes": 3,
+      "workspace": "/tmp/dashboard-test-v3",
+      "log": "/tmp/dashboard-v3.log"
+    },
+    "v4": {
+      "tokens": 95,
+      "time_minutes": 1,
+      "workspace": "/tmp/dashboard-test-v4",
+      "log": "/tmp/dashboard-v4.log"
+    },
+    "vanilla": {
+      "tokens": 273,
+      "time_minutes": 2,
+      "workspace": "/tmp/dashboard-test-vanilla",
+      "log": "/tmp/dashboard-vanilla.log"
+    }
+  },
+  "winner": "v4"
+}
