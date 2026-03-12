@@ -1,0 +1,59 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "name": "rest-api-with-auth",
+      "description": "Build a REST API with JWT authentication using Express.js. Requirements: User registration endpoint with password hashing (bcrypt), login endpoint that returns JWT token, protected /profile route that requires valid JWT, error handling middleware, input validation using express-validator, proper HTTP status codes, at least 5 unit tests covering auth flows. Create in src/api/",
+      "expected_files": [
+        "src/api/server.js",
+        "src/api/auth.js",
+        "src/api/middleware/auth.js",
+        "src/api/tests/auth.test.js"
+      ],
+      "complexity": "high",
+      "estimated_tokens": 15000
+    },
+    {
+      "id": 2,
+      "name": "crud-blog-with-database",
+      "description": "Create a complete blog post CRUD system with SQLite database. Requirements: Database schema with posts table (id, title, content, author, created_at, updated_at), migration script to create tables, 5 API endpoints (GET /posts, GET /posts/:id, POST /posts, PUT /posts/:id, DELETE /posts/:id), input validation (title required, max 200 chars; content required), error handling for not found/validation errors, at least 8 tests covering all CRUD operations and edge cases. Create in src/blog/",
+      "expected_files": [
+        "src/blog/database.js",
+        "src/blog/migrations/001_create_posts.sql",
+        "src/blog/routes/posts.js",
+        "src/blog/tests/posts.test.js"
+      ],
+      "complexity": "high",
+      "estimated_tokens": 12000
+    },
+    {
+      "id": 3,
+      "name": "react-component-library",
+      "description": "Build a React component library with 4 reusable components. Requirements: Button component (variants: primary, secondary, danger; sizes: small, medium, large; disabled state), Modal component (open/close, customizable header/body/footer, backdrop click to close), Form component (TextField, validation, error messages, submit handling), Card component (header, body, footer slots). Use modern React hooks, prop-types for validation, basic CSS modules for styling. Include README with usage examples. Create in src/components/",
+      "expected_files": [
+        "src/components/Button/Button.jsx",
+        "src/components/Modal/Modal.jsx",
+        "src/components/Form/Form.jsx",
+        "src/components/Card/Card.jsx",
+        "src/components/README.md"
+      ],
+      "complexity": "high",
+      "estimated_tokens": 10000
+    },
+    {
+      "id": 4,
+      "name": "data-processing-pipeline",
+      "description": "Create a data processing pipeline that imports CSV, transforms data, and exports to multiple formats. Requirements: Read CSV file with headers, validate data (check required fields, data types, ranges), transform operations (filter rows, aggregate by column, calculate statistics), export to JSON and XML formats, detailed error reporting (line numbers, validation failures), streaming for large files, at least 6 tests covering validation, transformation, and export. Include sample CSV with test data. Create in src/pipeline/",
+      "expected_files": [
+        "src/pipeline/reader.js",
+        "src/pipeline/validator.js",
+        "src/pipeline/transformer.js",
+        "src/pipeline/exporter.js",
+        "src/pipeline/tests/pipeline.test.js",
+        "src/pipeline/sample-data.csv"
+      ],
+      "complexity": "high",
+      "estimated_tokens": 13000
+    }
+  ]
+}

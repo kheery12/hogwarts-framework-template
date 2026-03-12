@@ -22,7 +22,15 @@
         "first_try_success": true,
         "notes": "Automated test"
       },
-      "winner": "v4"
+      "winner": "v4",
+      "vanilla": {
+        "completed": true,
+        "tokens_used": 118,
+        "time_minutes": 0,
+        "corrections_needed": 0,
+        "first_try_success": true,
+        "notes": "Vanilla Claude (no framework)"
+      }
     },
     {
       "id": 2,
@@ -44,7 +52,15 @@
         "first_try_success": true,
         "notes": "Automated test"
       },
-      "winner": "v4"
+      "winner": "v4",
+      "vanilla": {
+        "completed": true,
+        "tokens_used": 118,
+        "time_minutes": 0,
+        "corrections_needed": 0,
+        "first_try_success": true,
+        "notes": "Vanilla Claude (no framework)"
+      }
     },
     {
       "id": 3,
@@ -66,7 +82,15 @@
         "first_try_success": true,
         "notes": "Automated test"
       },
-      "winner": "v4"
+      "winner": "v4",
+      "vanilla": {
+        "completed": true,
+        "tokens_used": 110,
+        "time_minutes": 0,
+        "corrections_needed": 0,
+        "first_try_success": true,
+        "notes": "Vanilla Claude (no framework)"
+      }
     }
   ]
 }

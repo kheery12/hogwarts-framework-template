@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Framework Comparison: v3 vs v4 vs Vanilla</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .winner {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+        .loser {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        .metric {
+            margin: 15px 0;
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 4px;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000;
+            margin-top: 5px;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 18px;
+        }
+        .bar-chart {
+            margin: 25px 0;
+        }
+        .bar {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+        }
+        .bar-label {
+            width: 120px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .bar-container {
+            flex: 1;
+            height: 35px;
+            background: #e9ecef;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+        .bar-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 13px;
+            transition: width 0.5s ease;
+        }
+        .bar-fill.v3 { background: linear-gradient(90deg, #667eea 0%, #764ba2 100%); }
+        .bar-fill.v4 { background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%); }
+        .bar-fill.vanilla { background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>3-Way Framework Comparison</h1>
+        <p>v3 (Hogwarts) vs v4 (Lean) vs Vanilla Claude</p>
+        <p>Tasks: 3 | Date: 2026-03-12</p>
+    </div>
+
+    <div class="metrics">
+        <div class="card loser">
+            <h2>v3 (Hogwarts) </h2>
+            <div class="metric">
+                <div class="metric-label">Completion</div>
+                <div class="metric-value">100%</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Avg Tokens</div>
+                <div class="metric-value">124</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Avg Time</div>
+                <div class="metric-value">0.3m</div>
+            </div>
+        </div>
+
+        <div class="card winner">
+            <h2>v4 (Lean) ✅</h2>
+            <div class="metric">
+                <div class="metric-label">Completion</div>
+                <div class="metric-value">100%</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Avg Tokens</div>
+                <div class="metric-value">99</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Avg Time</div>
+                <div class="metric-value">0.0m</div>
+            </div>
+        </div>
+
+        <div class="card loser">
+            <h2>Vanilla (No Framework) </h2>
+            <div class="metric">
+                <div class="metric-label">Completion</div>
+                <div class="metric-value">100%</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Avg Tokens</div>
+                <div class="metric-value">115</div>
+            </div>
+            <div class="metric">
+                <div class="metric-label">Avg Time</div>
+                <div class="metric-value">0.0m</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Token Efficiency Comparison (Lower is Better)</h2>
+        <div class="bar-chart">
+            <div class="bar">
+                <div class="bar-label">v3 (Hogwarts)</div>
+                <div class="bar-container">
+                    <div class="bar-fill v3" style="width: 0.6183333333333334%">
+                        124
+                    </div>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">v4 (Lean)</div>
+                <div class="bar-container">
+                    <div class="bar-fill v4" style="width: 0.49333333333333335%">
+                        99
+                    </div>
+                </div>
+            </div>
+            <div class="bar">
+                <div class="bar-label">Vanilla</div>
+                <div class="bar-container">
+                    <div class="bar-fill vanilla" style="width: 0.5766666666666667%">
+                        115
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2>Framework Value Analysis</h2>
+        <p><strong>Key Question:</strong> Do frameworks help or hurt?</p>
+        <ul>
+            <li><strong>v3 vs Vanilla:</strong> 8 token difference (+7.2%)</li>
+            <li><strong>v4 vs Vanilla:</strong> 17 token difference (-14.5%)</li>
+            <li><strong>v3 vs v4:</strong> 25 token difference (+20.2%)</li>
+        </ul>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; color: #666; font-size: 14px;">
+        Generated: 2026-03-12 10:19:44
+    </div>
+</body>
+</html>
