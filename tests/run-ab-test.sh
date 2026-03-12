@@ -60,7 +60,7 @@ echo "   This will take 1-2 hours..."
 echo ""
 
 cd "$SWEBENCH_DIR"
-python swe_bench.py run --model opus-4.6 --$TEST_SIZE
+python3 swe_bench.py run --model opus-4.6 --$TEST_SIZE
 
 # Save results
 echo "💾 Saving v3 results..."
@@ -85,7 +85,7 @@ echo "   This will take 1-2 hours..."
 echo ""
 
 cd "$SWEBENCH_DIR"
-python swe_bench.py run --model opus-4.6 --$TEST_SIZE
+python3 swe_bench.py run --model opus-4.6 --$TEST_SIZE
 
 # Save results
 echo "💾 Saving v4 results..."
@@ -101,7 +101,7 @@ echo "════════════════════════�
 echo ""
 
 cd "$FRAMEWORK_DIR/tests"
-python compare-frameworks.py
+python3 compare-frameworks.py
 
 echo ""
 echo "╔══════════════════════════════════════════════════╗"
