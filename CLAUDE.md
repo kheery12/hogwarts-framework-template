@@ -1,6 +1,6 @@
-# [Project Name]
+# today-in-history
 
-> [USER FILLS THIS ONE LINE ONLY - what the software does]
+> [Today In History: An iOS app that delivers daily, curated historical facts from around the world, offering users engaging 2-3 minute reads across different cultures and topics, with pro features for personalized exploration]
 
 ## Tech Stack
 - Frontend: [pending]
