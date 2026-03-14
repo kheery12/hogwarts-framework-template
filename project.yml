@@ -13,7 +13,7 @@ settings:
     IPHONEOS_DEPLOYMENT_TARGET: "15.0"
     MARKETING_VERSION: "1.0"
     CURRENT_PROJECT_VERSION: "1"
-    DEVELOPMENT_TEAM: ""
+    DEVELOPMENT_TEAM: Q9GV25RG8L
     CODE_SIGN_STYLE: Automatic
 
 packages:
@@ -63,7 +63,7 @@ targets:
       path: TodayInHistory/TodayInHistory.entitlements
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.todayinhistory.app
+        PRODUCT_BUNDLE_IDENTIFIER: com.kyleheery.TodayInHistory
         INFOPLIST_FILE: TodayInHistory/Resources/Info.plist
         DEVELOPMENT_ASSET_PATHS: ""
         COREDATA_MOMD_NAME: TodayInHistory

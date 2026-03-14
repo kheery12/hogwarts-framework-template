@@ -79,3 +79,5 @@ logs/house-cup/archive/
 logs/pensieve/archive/
 *.p8
 claudeAPI key.rtf
+TodayInHistory.xcodeproj/xcuserdata/
+TodayInHistory.xcodeproj/project.xcworkspace/xcuserdata/

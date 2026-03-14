@@ -411,11 +411,11 @@
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					B6113D586D20B2F38551F5A4 = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = Q9GV25RG8L;
 						ProvisioningStyle = Automatic;
 					};
 					F5B4A5C91B1C2E7D6FEC93BB = {
-						DevelopmentTeam = "";
+						DevelopmentTeam = Q9GV25RG8L;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -524,7 +524,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.todayinhistory.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyleheery.TodayInHistory;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -567,7 +567,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Q9GV25RG8L;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -651,7 +651,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Q9GV25RG8L;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -705,7 +705,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.todayinhistory.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kyleheery.TodayInHistory;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
