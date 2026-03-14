@@ -27,9 +27,7 @@ struct FactDetailView: View {
 
                     // Title
                     Text(fact.title)
-                        .font(.title)
-                        .fontDesign(.serif)
-                        .fontWeight(.semibold)
+                        .font(.title.bold())
                         .foregroundColor(.theme.primaryText)
 
                     // Full content

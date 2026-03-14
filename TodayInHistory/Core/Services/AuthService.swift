@@ -76,8 +76,8 @@ final class AuthService: ObservableObject {
         // Preserve existing data before linking
         let existingFavorites = try await fetchUserFavorites()
 
-        // Link the account
-        try await supabase.auth.linkIdentity(
+        // Link the account (sign in with Apple ID token — Supabase merges with anonymous session)
+        try await supabase.auth.signInWithIdToken(
             credentials: .init(provider: .apple, idToken: idToken)
         )
 

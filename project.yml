@@ -1,0 +1,87 @@
+name: TodayInHistory
+options:
+  bundleIdPrefix: com.todayinhistory
+  deploymentTarget:
+    iOS: "15.0"
+  defaultConfig: Debug
+  xcodeVersion: "15"
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    IPHONEOS_DEPLOYMENT_TARGET: "15.0"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+    CODE_SIGN_STYLE: Automatic
+
+packages:
+  Supabase:
+    url: https://github.com/supabase/supabase-swift
+    from: "2.0.0"
+  Kingfisher:
+    url: https://github.com/onevcat/Kingfisher
+    from: "7.0.0"
+  Sentry:
+    url: https://github.com/getsentry/sentry-cocoa
+    from: "8.0.0"
+
+targets:
+  TodayInHistory:
+    type: application
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: TodayInHistory/App
+      - path: TodayInHistory/Core
+      - path: TodayInHistory/Features
+      - path: TodayInHistory/Shared
+      - path: TodayInHistory/UI
+      - path: TodayInHistory/Resources
+    info:
+      path: TodayInHistory/Resources/Info.plist
+      properties:
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: false
+        UIBackgroundModes:
+          - fetch
+        BGTaskSchedulerPermittedIdentifiers:
+          - com.todayinhistory.refresh
+        NSFaceIDUsageDescription: "Use Face ID to quickly access your account."
+        NSUserNotificationsUsageDescription: "Get daily reminders about new historical facts."
+        UIUserInterfaceStyle: Automatic
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+          - UIInterfaceOrientationPortraitUpsideDown
+          - UIInterfaceOrientationLandscapeLeft
+          - UIInterfaceOrientationLandscapeRight
+        LSApplicationCategoryType: public.app-category.education
+    entitlements:
+      path: TodayInHistory/TodayInHistory.entitlements
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.todayinhistory.app
+        INFOPLIST_FILE: TodayInHistory/Resources/Info.plist
+        DEVELOPMENT_ASSET_PATHS: ""
+        COREDATA_MOMD_NAME: TodayInHistory
+    dependencies:
+      - package: Supabase
+        product: Supabase
+      - package: Kingfisher
+      - package: Sentry
+        product: Sentry
+
+  TodayInHistoryTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "15.0"
+    sources:
+      - path: TodayInHistory/Tests/UnitTests
+    dependencies:
+      - target: TodayInHistory
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.todayinhistory.tests

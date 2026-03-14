@@ -77,3 +77,5 @@ pids/
 # Archive folders (pensieve archives, old ceremonies, etc.)
 logs/house-cup/archive/
 logs/pensieve/archive/
+*.p8
+claudeAPI key.rtf

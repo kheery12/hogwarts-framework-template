@@ -1,5 +1,6 @@
 import Foundation
 import UserNotifications
+import UIKit
 
 final class NotificationService {
 
@@ -67,10 +68,14 @@ final class NotificationService {
     // MARK: - Badge Management
 
     func clearBadge() async {
-        do {
-            try await center.setBadgeCount(0)
-        } catch {
-            Logger.log("Failed to clear badge: \(error)", level: .error)
+        if #available(iOS 16.0, *) {
+            do {
+                try await center.setBadgeCount(0)
+            } catch {
+                Logger.log("Failed to clear badge: \(error)", level: .error)
+            }
+        } else {
+            UIApplication.shared.applicationIconBadgeNumber = 0
         }
     }
 }
